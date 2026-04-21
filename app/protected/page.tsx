@@ -1,25 +1,23 @@
-import { Suspense } from 'react'
-import { redirect } from 'next/navigation'
+import { Suspense } from "react";
+import { redirect } from "next/navigation";
 
-import { LogoutButton } from '@/components/logout-button'
-import { createClient } from '@/lib/supabase/server'
+import { createClient } from "@/lib/supabase/server";
 
 async function ProtectedContent() {
-  const supabase = await createClient()
+  const supabase = await createClient();
 
-  const { data, error } = await supabase.auth.getClaims()
+  const { data, error } = await supabase.auth.getClaims();
   if (error || !data?.claims) {
-    redirect('/auth/login')
+    redirect("/auth/login");
   }
 
   return (
-    <div className="flex h-svh w-full items-center justify-center gap-2">
+    <div className="flex w-full items-center justify-center">
       <p>
         Hello <span>{data.claims.email}</span>
       </p>
-      <LogoutButton />
     </div>
-  )
+  );
 }
 
 export default function ProtectedPage() {
@@ -27,5 +25,5 @@ export default function ProtectedPage() {
     <Suspense>
       <ProtectedContent />
     </Suspense>
-  )
+  );
 }
