@@ -1,8 +1,16 @@
+import { Suspense } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-export default async function Page({ searchParams }: { searchParams: Promise<{ error: string }> }) {
+async function ErrorMessage({ searchParams }: { searchParams: Promise<{ error: string }> }) {
   const params = await searchParams
+  return params?.error ? (
+    <p className="text-sm text-muted-foreground">Code error: {params.error}</p>
+  ) : (
+    <p className="text-sm text-muted-foreground">An unspecified error occurred.</p>
+  )
+}
 
+export default function Page({ searchParams }: { searchParams: Promise<{ error: string }> }) {
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm">
@@ -12,11 +20,9 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ e
               <CardTitle className="text-2xl">Sorry, something went wrong.</CardTitle>
             </CardHeader>
             <CardContent>
-              {params?.error ? (
-                <p className="text-sm text-muted-foreground">Code error: {params.error}</p>
-              ) : (
-                <p className="text-sm text-muted-foreground">An unspecified error occurred.</p>
-              )}
+              <Suspense fallback={<p className="text-sm text-muted-foreground">Loading...</p>}>
+                <ErrorMessage searchParams={searchParams} />
+              </Suspense>
             </CardContent>
           </Card>
         </div>
