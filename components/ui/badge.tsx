@@ -14,6 +14,11 @@ const badgeVariants = cva(
           "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
         destructive:
           "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
+        info: "border-transparent bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300",
+        warning:
+          "border-transparent bg-yellow-50 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-300",
+        success:
+          "border-transparent  bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300",
         outline: "text-foreground",
       },
     },
@@ -24,7 +29,8 @@ const badgeVariants = cva(
 );
 
 export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {}
 
 function Badge({ className, variant, ...props }: BadgeProps) {

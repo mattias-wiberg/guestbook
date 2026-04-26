@@ -9,8 +9,8 @@ const defaultUrl = process.env.NEXT_PUBLIC_SITE_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "Guestbook",
+  description: "The best guestbook in the world!",
 };
 
 const geistSans = Geist({

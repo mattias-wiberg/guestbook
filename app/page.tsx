@@ -4,6 +4,7 @@ import { ThemeSwitcher } from "@/components/theme-switcher";
 import { hasEnvVars } from "@/lib/utils";
 import Link from "next/link";
 import { Suspense } from "react";
+import { EnvPopover } from "@/components/env-popover";
 
 export default function Home() {
   return (
@@ -24,11 +25,13 @@ export default function Home() {
           </div>
         </nav>
         <div className="flex-1 flex max-w-5xl">
-          Hello world from GHCR! Amazing new feature 🚀
+          Hello world from GHCR! Amazing new feature 🚀 with a broken
+          healthcheck 🪦
         </div>
 
-        <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-2">
+        <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-2 py-2">
           <ThemeSwitcher />
+          <EnvPopover />
         </footer>
       </div>
     </main>
