@@ -11,6 +11,9 @@ jobs:
   deploy-dev:
     if: github.ref == 'refs/heads/main'
     uses: ./.github/workflows/docker-build-deploy.yml
+    permissions:
+      contents: read
+      packages: write
     with:
       environment: dev
       tag_prefix: dev-
@@ -20,9 +23,11 @@ jobs:
   deploy-prod:
     if: github.ref == 'refs/heads/production'
     uses: ./.github/workflows/docker-build-deploy.yml
+    permissions:
+      contents: read
+      packages: write
     with:
       environment: prod
       tag_prefix: prod-
       latest_tag: prod-latest
     secrets: inherit
-
