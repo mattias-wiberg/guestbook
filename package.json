@@ -4,9 +4,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "generate:db:types": "supabase gen types typescript --local --schema guestbook > ./lib/supabase/database.types.ts",
+    "generate:db:remote:types": "supabase gen types typescript --db-url postgres://postgres.[POOLER_TENANT_ID]:[POSTGRES_PASSWORD]@supabase.dev.mattiaswiberg.com:5432/postgres --schema guestbook > ./lib/supabase/database.types.ts",
+    "atlas:setup": "node scripts/atlas-dev-setup.mjs",
+    "atlas:diff": "npm run atlas:setup && atlas migrate diff --env local"
   },
   "dependencies": {
+    "@faker-js/faker": "^10.4.0",
+    "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-checkbox": "^1.3.1",
     "@radix-ui/react-dropdown-menu": "^2.1.14",
     "@radix-ui/react-label": "^2.1.6",
@@ -21,10 +27,15 @@
     "radix-ui": "^1.4.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.3.0"
+    "react-hook-form": "^7.74.0",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.3.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@postgres-language-server/cli": "^0.24.0",
+    "@postgres-language-server/cli-x86_64-windows-msvc": "^0.24.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

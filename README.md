@@ -1,6 +1,6 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
+<a href="https://guestbook.mattiaswiberg.com/">
+  <img alt="Next.js and Supabase Boilerplate - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
+  <h1 align="center">Next.js and Supabase Boilerplate</h1>
 </a>
 
 <p align="center">
@@ -10,10 +10,7 @@
 <p align="center">
   <a href="#features"><strong>Features</strong></a> ·
   <a href="#demo"><strong>Demo</strong></a> ·
-  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
   <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
 </p>
 <br/>
 
@@ -33,60 +30,26 @@
 - Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
   - Environment variables automatically assigned to Vercel project
 
-## Demo
+## Boilerplate
 
-You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
+This is a boilerplate and should be used as an example and baseline for new projects following best practices.
 
-## Deploy to Vercel
+## Setting up a new project
 
-Vercel deployment will guide you through creating a Supabase account and project.
+To set up a new project with this boilerpalte there are multiple things that requires changes.
 
-After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
+Enviorment variables as a `.env.local` for example for development towards a local database. See the `.env.exmaple` for what variables that are required.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This+starter+configures+Supabase+Auth+to+use+cookies%2C+making+the+user%27s+session+available+throughout+the+entire+Next.js+app+-+Client+Components%2C+Server+Components%2C+Route+Handlers%2C+Server+Actions+and+Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png)
+Change of hardcoded values:
+In the scripts point the `generate:db` scripts to a schema with the project name (currently poinint towards the `guestbook` schema in this boilerplate).
 
-The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
-
-If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
+A helper cli for this will be developed in the future to help not having to do this.
 
 ## Clone and run locally
 
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
+1. Rename `.env.example` to `.env.local` and update with values.
 
-2. Create a Next.js app using the Supabase Starter template npx command
-
-   ```bash
-   npx create-next-app --example with-supabase with-supabase-app
-   ```
-
-   ```bash
-   yarn create next-app --example with-supabase with-supabase-app
-   ```
-
-   ```bash
-   pnpm create next-app --example with-supabase with-supabase-app
-   ```
-
-3. Use `cd` to change into the app's directory
-
-   ```bash
-   cd with-supabase-app
-   ```
-
-4. Rename `.env.example` to `.env.local` and update the following:
-
-  ```env
-  NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
-  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=[INSERT SUPABASE PROJECT API PUBLISHABLE OR ANON KEY]
-  ```
-  > [!NOTE]
-  > This example uses `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, which refers to Supabase's new **publishable** key format.
-  > Both legacy **anon** keys and new **publishable** keys can be used with this variable name during the transition period. Supabase's dashboard may show `NEXT_PUBLIC_SUPABASE_ANON_KEY`; its value can be used in this example.
-  > See the [full announcement](https://github.com/orgs/supabase/discussions/29260) for more information.
-
-  Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` can be found in [your Supabase project's API settings](https://supabase.com/dashboard/project/_?showConnect=true)
-
-5. You can now run the Next.js local development server:
+2. You can now run the Next.js local development server:
 
    ```bash
    npm run dev
@@ -94,16 +57,69 @@ If you wish to just develop locally and not deploy to Vercel, [follow the steps 
 
    The starter kit should now be running on [localhost:3000](http://localhost:3000/).
 
-6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
+3. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
 
 > Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
 
-## Feedback and issues
+## Database workflow
 
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
+### Atlas
 
-## More Supabase examples
+We use [Atlas](https://atlasgo.io/getting-started) for schema migrations. It gives us proper diff-based migration generation from `supabase/schema.sql`, which makes reviewing changes to triggers, functions, and RLS policies much clearer than hand-written SQL.
 
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+Atlas uses a separate `atlas_dev` database as a clean scratch space to compute diffs — this keeps it from conflicting with your running local Supabase database.
+
+#### Prerequisites
+
+- [Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started) installed
+- [Atlas CLI](https://atlasgo.io/getting-started) installed
+
+#### Day-to-day workflow
+
+1. Start the local Supabase stack:
+
+   ```bash
+   supabase start
+   ```
+
+2. Edit `supabase/schema.sql` with your desired changes.
+
+3. Generate a migration:
+
+   ```bash
+   npm run atlas:diff -- <migration_name>
+   ```
+
+   This automatically recreates the `atlas_dev` scratch database, diffs your schema against the existing migrations, and writes a new file to `supabase/migrations/`.
+
+4. Review the generated SQL file in `supabase/migrations/`.
+
+5. Apply the migration to your local database:
+
+   ```bash
+   supabase db reset
+   ```
+
+6. Regenerate TypeScript types:
+
+   ```bash
+   npm run generate:db:types
+   ```
+
+#### How the dev database works
+
+Atlas requires a clean database to replay migrations into and compute diffs. Because the main local Supabase database (`postgres`) already has your schema applied, we use a separate `atlas_dev` database created from `template0` (bare Postgres). It is seeded with minimal `auth` stubs so that references to `auth.uid()` and `auth.users` in `schema.sql` resolve correctly.
+
+The `npm run atlas:setup` script (called automatically by `atlas:diff`) handles this setup on every run, so you never need to manage `atlas_dev` manually.
+
+## Scripts
+
+This boilerplate comes with several scripts to help with the developer experience
+
+### `generate:db:types`
+
+Generates the required types for the client and server side supabase clients for a type safe approach when interacting with the database. Allow the use of the supabase client as a ORM.
+
+### `generate:db:remote:types`
+
+Same as the `generate:db:types` script but running towards a remote environment given the .
