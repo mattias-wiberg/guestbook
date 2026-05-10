@@ -35,7 +35,7 @@ const formSchema = z.object({
   title: z
     .string()
     .min(5, "Title must be at least 5 characters.")
-    .max(100, "Title must be at most 100 characters."),
+    .max(30, "Title must be at most 30 characters."),
   message: z
     .string()
     .min(20, "Message must be at least 20 characters.")
@@ -136,7 +136,7 @@ export function PostForm() {
           onClick={() => {
             form.clearErrors();
             form.setValues({
-              title: faker.lorem.sentence({ min: 3, max: 8 }),
+              title: faker.lorem.sentence({ min: 1, max: 3 }),
               message: faker.lorem.paragraph({ min: 1, max: 3 }),
             });
           }}

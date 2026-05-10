@@ -19,7 +19,7 @@ type PostProps = {
 
 export function Post({ title, message, authorEmail, createdAt }: PostProps) {
   return (
-    <Card className="w-full max-w-sm gap-2">
+    <Card className="w-full max-w-md gap-2">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span>{title}</span>
