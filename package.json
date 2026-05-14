@@ -17,6 +17,7 @@
     "@radix-ui/react-dropdown-menu": "^2.1.14",
     "@radix-ui/react-label": "^2.1.6",
     "@radix-ui/react-slot": "^1.2.2",
+    "@supabase/server": "^1.0.0",
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.103.3",
     "class-variance-authority": "^0.7.1",
@@ -32,10 +33,12 @@
     "tailwind-merge": "^3.3.0",
     "zod": "^4.3.6"
   },
+  "optionalDependencies": {
+    "@postgres-language-server/cli-x86_64-windows-msvc": "^0.24.0"
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@postgres-language-server/cli": "^0.24.0",
-    "@postgres-language-server/cli-x86_64-windows-msvc": "^0.24.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
