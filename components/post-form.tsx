@@ -28,7 +28,7 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from "@/components/ui/input-group";
-import { createClient } from "@/lib/supabase/client";
+import { createBrowserClient } from "@/lib/supabase/clients/browser";
 import { Sparkles } from "lucide-react";
 
 const formSchema = z.object({
@@ -52,7 +52,7 @@ export function PostForm() {
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    const supabaseClient = createClient();
+    const supabaseClient = createBrowserClient();
     const res = await supabaseClient
       .schema("guestbook")
       .from("posts")

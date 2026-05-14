@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
 
-import { createClient } from "@/lib/supabase/server";
+import { createServerClient } from "@/lib/supabase/clients/server";
 
 async function ProtectedContent() {
-  const supabase = await createClient();
+  const supabase = await createServerClient();
 
   const { data, error } = await supabase.auth.getClaims();
   if (error || !data?.claims) {

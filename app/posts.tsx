@@ -1,8 +1,8 @@
 import { Post } from "@/components/post";
-import { createClient } from "@/lib/supabase/server";
+import { createServerClient } from "@/lib/supabase/clients/server";
 
 export default async function Posts() {
-  const supabaseClient = await createClient();
+  const supabaseClient = await createServerClient();
   const res = await supabaseClient
     .schema("guestbook")
     .from("posts")
@@ -18,14 +18,10 @@ export default async function Posts() {
         created_at
     `,
     )
-    .order("id");
+    .order("created_at", { ascending: false });
   if (res.error) {
     return `Failed to fetch posts. Please try again. ${res.statusText}(${res.status}): ${res.error.message}`;
-    // toast.error("Failed to fetch posts. Please try again.", {
-    //   description: `${res.statusText}(${res.status}): ${res.error.message}`,
-    // });
   }
-  console.log("Fetched posts:", res.data);
   const posts = res.data || [];
 
   return (
