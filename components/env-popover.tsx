@@ -1,11 +1,13 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { EnvBadge, ENVIRONMENT } from "./env-badge";
 import { Bug } from "lucide-react";
+import { EnvBadge, ENVIRONMENT } from "./env-badge";
 
 export function EnvPopover() {
   const supabaseHostname = new URL(
